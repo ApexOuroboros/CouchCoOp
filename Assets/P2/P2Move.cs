@@ -24,8 +24,8 @@ public class P2Move : MonoBehaviour
     {
         if (p2Con.isGrounded)
         {
-            //mDir2 = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            //mDir2 *= speed;
+            mDir2 = new Vector3(Input.GetAxis("Vertical2"),0 ,0);
+            mDir2 *= speed;
 
 
             if (Input.GetKey(KeyCode.LeftArrow))
@@ -33,12 +33,6 @@ public class P2Move : MonoBehaviour
 
             if (Input.GetKey(KeyCode.RightArrow))
                 transform.Rotate(0, 1, 0);
-
-            if (Input.GetKey(KeyCode.UpArrow))
-                transform.position += Vector3.forward * Time.deltaTime;
-
-            if (Input.GetKey(KeyCode.DownArrow))
-                transform.position += Vector3.back * Time.deltaTime;
 
             if (Input.GetKey(KeyCode.Keypad0))
             {

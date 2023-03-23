@@ -8,6 +8,7 @@ using UnityEngine;
 public class P1Move : MonoBehaviour
 {
     CharacterController p1Con;
+    [SerializeField] Transform resetPointP1;
 
     public float speed = 6.0f;
     public float jSpeed = 8.0f;
@@ -27,7 +28,7 @@ public class P1Move : MonoBehaviour
         
         if(p1Con.isGrounded)
         {
-            mDir = new Vector3(Input.GetAxis("Vertical"),0 ,0 );
+            mDir = new Vector3(Input.GetAxis("Vertical2"),0 ,0 );
             mDir *= speed;
 
 
@@ -46,4 +47,12 @@ public class P1Move : MonoBehaviour
         p1Con.Move(mDir * Time.deltaTime);
 
     }
+
+    public void ResetPlayerP1()
+    {
+        p1Con.enabled = false;
+        p1Con.transform.position = resetPointP1.transform.position;
+        p1Con.enabled = true;
+    }
+
 }

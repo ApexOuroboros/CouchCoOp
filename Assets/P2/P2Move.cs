@@ -7,6 +7,7 @@ using UnityEngine;
 public class P2Move : MonoBehaviour
 {
     CharacterController p2Con;
+    [SerializeField] Transform resetPointP2;
 
     public float speed = 6.0f;
     public float jSpeed = 8.0f;
@@ -24,7 +25,7 @@ public class P2Move : MonoBehaviour
     {
         if (p2Con.isGrounded)
         {
-            mDir2 = new Vector3(Input.GetAxis("Vertical2"),0 ,0);
+            mDir2 = new Vector3(Input.GetAxis("Vertical"),0 ,0);
             mDir2 *= speed;
 
 
@@ -42,4 +43,12 @@ public class P2Move : MonoBehaviour
         mDir2.y -= grav * Time.deltaTime;
         p2Con.Move(mDir2 * Time.deltaTime);
     }
+
+    public void ResetPlayerP2()
+    {
+        p2Con.enabled = false;
+        p2Con.transform.position = resetPointP2.transform.position;
+        p2Con.enabled = true;
+    }
+
 }
